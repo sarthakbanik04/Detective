@@ -1,20 +1,12 @@
 package Class_assignment;
 
 public class Investigation {
-
-    // Actual culprit ID
     int actualCulpritID;
-
-    // Number of accusation attempts
     int accusationAttempts;
-
-    // Constructor
     Investigation(int actualCulpritID) {
         this.actualCulpritID = actualCulpritID;
         this.accusationAttempts = 0;
     }
-
-    // Search for a suspect using suspect ID
     public Suspect searchSuspect(Suspect[] suspects, int suspectID) {
 
         for (Suspect suspect : suspects) {
@@ -26,8 +18,6 @@ public class Investigation {
 
         return null;
     }
-
-    // Investigate and display a particular suspect
     public void investigateSuspect(Suspect[] suspects, int suspectID) {
 
         Suspect suspect = searchSuspect(suspects, suspectID);
@@ -44,10 +34,8 @@ public class Investigation {
         }
     }
 
-    // Accuse a suspect
     public boolean accuseSuspect(int accusedID) {
 
-        // Maximum three attempts
         if (accusationAttempts >= 3) {
 
             System.out.println("INVESTIGATION FAILED!");
@@ -56,14 +44,10 @@ public class Investigation {
 
             return false;
         }
-
-        // Increase attempt count
         accusationAttempts++;
 
         System.out.println("----- ACCUSATION -----");
         System.out.println("Accusation Attempt: " + accusationAttempts);
-
-        // Compare accused suspect with actual culprit
         if (accusedID == actualCulpritID) {
 
             System.out.println("CASE SOLVED!");
@@ -92,8 +76,6 @@ public class Investigation {
             return false;
         }
     }
-
-    // Check whether all three attempts have been used
     public boolean attemptsFinished() {
 
         return accusationAttempts >= 3;
